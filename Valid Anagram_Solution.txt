@@ -1,0 +1,70 @@
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+ 
+
+Example 1:
+
+Input: s = "anagram", t = "nagaram"
+
+Output: true
+
+Example 2:
+
+Input: s = "rat", t = "car"
+
+Output: false
+
+ 
+
+Constraints:
+
+1 <= s.length, t.length <= 5 * 104
+s and t consist of lowercase English letters.
+ 
+
+Follow up: What if the inputs contain Unicode characters? How would you adapt your solution to such a case?
+
+C++ Solution:
+
+#include<iostream>
+#include<string>
+#include<algorithm>
+#include<cctype>
+using namespace std;
+
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+      return cleanAndSort(s) == cleanAndSort(t);
+    }
+
+    string cleanAndSort(string str) {
+        string cleaned = "";
+
+        for (char c : str){
+        if(isalnum(c)){
+            cleaned += c;
+        }
+      }
+
+      sort(cleaned.begin(), cleaned.end());
+
+      return cleaned;
+    }
+};
+
+Python 3 Solution:
+
+class Solution:
+    def cleanAndSort(self,str):
+        cleaned = ""
+        for char in str:
+            if char.isalnum():
+                cleaned += char
+        
+        return sorted(cleaned)
+    
+    def isAnagram(self, s: str, t: str) -> bool:
+        return self.cleanAndSort(s) == self.cleanAndSort(t)
+
+    

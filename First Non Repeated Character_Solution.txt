@@ -1,0 +1,19 @@
+Write a Python function first_non_repeated_char(s) that takes a string s and returns the first non-repeated character from the string.
+
+A non-repeated character is a character that appears exactly once in the string. If no such character exists, return None.
+
+def first_non_repeated_char(s):
+    char_count = {}
+    for char in s:
+        if char in char_count:
+            char_count[char]+=1
+        else:
+            char_count[char] = 1
+    for i in range(len(s)):
+        if(char_count[s[i]] == 1):
+            return s[i]
+    return None
+	
+print(first_non_repeated_char("aabbcc"))     # Output: None
+print(first_non_repeated_char("aabccbd"))    # Output: d
+print(first_non_repeated_char("swiss"))   	
